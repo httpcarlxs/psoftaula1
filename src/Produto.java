@@ -6,11 +6,10 @@ public class Produto {
     private double preco;
     private String produtoID;
 
-    public Produto(String nome, String fabricante, double preco, String produtoID) {
+    public Produto(String nome, String fabricante, double preco) {
         this.preco = preco;
         this.fabricante = fabricante;
         this.nome = nome;
-        this.produtoID = produtoID;
     }
 
     public String getNome() {
@@ -25,26 +24,23 @@ public class Produto {
         return this.preco;
     }
 
-    public String getProdutoID() {
-        return this.produtoID;
-    }
 
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || this.getClass() != obj.getClass()) return false;
         Produto produto = (Produto) obj;
-        return Objects.equals(this.produtoID, produto.produtoID);
+        return Objects.equals(this.nome, produto.nome);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.produtoID);
+        return Objects.hash(this.nome);
     }
 
     @Override
     public String toString() {
-        return "O produto " + this.getNome() +
+        return this.getNome() +
                 " é do fabricante " + this.getFabricante() +
                 " e custa " + this.getPreco();
     }

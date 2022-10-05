@@ -10,7 +10,7 @@ public class Lote {
         this.quantidade = quantidade;
         this.data = data;
         this.produto = produto;
-        this.loteID = produto.getProdutoID() + data;
+        this.loteID = produto.getNome() + data;
     }
 
     public String getData() {
@@ -36,5 +36,13 @@ public class Lote {
     @Override
     public int hashCode() {
         return Objects.hash(this.produto.getNome() + this.data);
+    }
+
+    @Override
+    public String toString() {
+        return "Na data "+this.getData() +
+                " foi feito um lote de " + this.produto.getNome() +
+                " com " + this.getQuantidade() +
+                " unidades";
     }
 }

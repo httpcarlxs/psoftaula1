@@ -17,7 +17,7 @@ public class Sistema {
                     "(E)xibir Produto\n" +
                     "(N)ovo Lote\n" +
                     "(L)istar Produtos\n" +
-                    "(V)erificar Disponibilidade\n" +
+                    "(V)er lotes\n" +
                     "\n" +
                     "Opção> ");
 
@@ -36,11 +36,11 @@ public class Sistema {
             case "N":
                 cadastraLote(facade, scanner);
                 break;
-            case "A":
+            case "L":
                 listaProdutos(facade, scanner);
                 break;
-            case "R":
-                verificaDisponibilidade(facade, scanner);
+            case "V":
+                listaLotes(facade, scanner);
                 break;
             default:
                 System.out.println("Entrada inválida!");
@@ -49,11 +49,9 @@ public class Sistema {
         }
     }
 
-    private static void verificaDisponibilidade(ApplicationFacade facade, Scanner scanner) {
-        System.out.println("Nome: ");
-        String nome = scanner.nextLine();
+    private static void listaLotes(ApplicationFacade facade, Scanner scanner) {
 
-        System.out.println(facade.verificaDisponibilidade(nome));
+        System.out.println(facade.listaLotes());
     }
 
     private static void listaProdutos(ApplicationFacade facade, Scanner scanner) {
@@ -61,8 +59,8 @@ public class Sistema {
     }
 
     private static void cadastraLote(ApplicationFacade facade, Scanner scanner) {
-        System.out.print("ID do produto: ");
-        String produtoID = scanner.next();
+        System.out.print("Nome do produto: ");
+        String nome = scanner.next();
         limpaBuffer(scanner);
 
         System.out.print("Quantidade: ");
@@ -73,7 +71,7 @@ public class Sistema {
         String data = scanner.next();
         limpaBuffer(scanner);
 
-        System.out.println(facade.cadastraLote(produtoID, quantidade, data));
+        System.out.println(facade.cadastraLote(nome, quantidade, data));
     }
 
     private static void exibeProduto(ApplicationFacade facade, Scanner scanner) {
@@ -95,11 +93,7 @@ public class Sistema {
         double preco = scanner.nextDouble();
         limpaBuffer(scanner);
 
-        System.out.print("ID: ");
-        String produtoID = scanner.next();
-        limpaBuffer(scanner);
-
-        System.out.println(facade.cadastraProduto(nome, fabricante, preco, produtoID));
+        System.out.println(facade.cadastraProduto(nome, fabricante, preco));
     }
 
     private static void limpaBuffer(Scanner scanner) {
