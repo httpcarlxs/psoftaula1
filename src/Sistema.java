@@ -77,10 +77,11 @@ public class Sistema {
     }
 
     private static void exibeProduto(ApplicationFacade facade, Scanner scanner) {
-        System.out.print("Nome: ");
-        String nome = scanner.nextLine();
+        System.out.print("ID: ");
+        String produtoID = scanner.next();
+        limpaBuffer(scanner);
 
-        System.out.println(facade.exibeProduto(nome));
+        System.out.println(facade.exibeProduto(produtoID));
     }
 
     private static void cadastraProduto(ApplicationFacade facade, Scanner scanner) {

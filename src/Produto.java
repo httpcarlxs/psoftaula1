@@ -41,4 +41,11 @@ public class Produto {
     public int hashCode() {
         return Objects.hash(this.produtoID);
     }
+
+    @Override
+    public String toString() {
+        return "O produto " + this.getNome() +
+                " é do fabricante " + this.getFabricante() +
+                " e custa " + this.getPreco();
+    }
 }
